@@ -12,7 +12,12 @@ type Walker interface {
 
 // PlayerWalker walks for players
 type PlayerWalker struct {
-	client *apiclient.Client
+	client apiclient.Client
+}
+
+// NewPlayerWalker returns a new playerwalker
+func NewPlayerWalker(client apiclient.Client) *PlayerWalker {
+	return &PlayerWalker{client: client}
 }
 
 // GetGameIDList walks to get list of games
