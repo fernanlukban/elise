@@ -61,7 +61,23 @@ func (tc *TestClient) GetMatchTimeline(ctx context.Context, r region.Region, mat
 }
 
 func (tc *TestClient) GetMatchlist(ctx context.Context, r region.Region, accountID string, opts *apiclient.GetMatchlistOptions) (*apiclient.Matchlist, error) {
-	return &apiclient.Matchlist{}, nil
+	matchList := apiclient.Matchlist{
+		Matches: []apiclient.MatchReference{
+			apiclient.MatchReference{
+				GameID: 0,
+			},
+			apiclient.MatchReference{
+				GameID: 1,
+			},
+			apiclient.MatchReference{
+				GameID: 2,
+			},
+		},
+		TotalGames: 3,
+		StartIndex: 0,
+		EndIndex:   2,
+	}
+	return &matchList, nil
 }
 
 func (tc *TestClient) GetRecentMatchlist(ctx context.Context, r region.Region, accountID string) (*apiclient.Matchlist, error) {
