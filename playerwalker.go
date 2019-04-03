@@ -7,10 +7,10 @@ import (
 	"github.com/yuhanfang/riot/constants/region"
 )
 
-// Walker is an interface to use for types that can
+// PlayerWalkerI is an interface to use for types that can
 // walk through players
-type Walker interface {
-	GetGameIDList(accountID string) []int64
+type PlayerWalkerI interface {
+	GetGameIDList(ctx context.Context, region region.Region, accountID string, opts *apiclient.GetMatchlistOptions) ([]int64, error)
 }
 
 // PlayerWalker walks for players
