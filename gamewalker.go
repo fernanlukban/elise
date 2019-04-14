@@ -25,5 +25,14 @@ func NewGameWalker(client apiclient.Client) *GameWalker {
 
 // GetAccountIDList gets the list of accountID's given a gameID
 func (gw *GameWalker) GetAccountIDList(ctx context.Context, region region.Region, matchID int64) ([]string, error) {
-	return []string{""}, nil
+	match, err := gw.client.GetMatch(ctx, region, matchID)
+	if err != nil {
+		return []string{""}, err
+	}
+	accountIDList := make([]string, 10)
+	for i, participantIdentity := range match.ParticipantIdentities {
+		accountID := participantIdentity.Player.AccountID
+		accountIDList[i] = accountID
+	}
+	return accountIDList, nil
 }

@@ -17,15 +17,17 @@ func TestGetAccountIDList(t *testing.T) {
 
 	// Passing in 0 since we need placeholder value
 	accountIDList, err := playerWalker.GetAccountIDList(ctx, reg, 0)
-	expectedAccountIDList := []string{""}
+	expectedAccountIDList := []string{"1", "2", "3", "4", "5", "6", "7", "8", "9", "10"}
 
 	if err != nil {
-		t.Errorf("Error is nil")
+		t.Errorf("Error is not nil")
 	}
 	if len(accountIDList) != len(expectedAccountIDList) {
-		t.Errorf("Expected 1 item, got %d", len(accountIDList))
+		t.Errorf("Expected %d items, got %d", len(expectedAccountIDList), len(accountIDList))
 	}
-	if accountIDList[0] != "" {
-		t.Errorf("Got wrong value for accountIDList, wanted \"\", got %s", accountIDList[0])
+	for i, accountID := range accountIDList {
+		if accountID != expectedAccountIDList[i] {
+			t.Errorf("Got wrong value for accountID, wanted %s, got %s", expectedAccountIDList[i], accountID)
+		}
 	}
 }

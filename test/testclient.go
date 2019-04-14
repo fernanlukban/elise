@@ -53,7 +53,61 @@ func (tc *TestClient) GetLeagueByID(ctx context.Context, r region.Region, league
 }
 
 func (tc *TestClient) GetMatch(ctx context.Context, r region.Region, matchID int64) (*apiclient.Match, error) {
-	return &apiclient.Match{}, nil
+	match := apiclient.Match{
+		ParticipantIdentities: []apiclient.ParticipantIdentity{
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "1",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "2",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "3",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "4",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "5",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "6",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "7",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "8",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "9",
+				},
+			},
+			apiclient.ParticipantIdentity{
+				Player: apiclient.Player{
+					AccountID: "10",
+				},
+			},
+		},
+	}
+	return &match, nil
 }
 
 func (tc *TestClient) GetMatchTimeline(ctx context.Context, r region.Region, matchID int64) (*apiclient.MatchTimeline, error) {
